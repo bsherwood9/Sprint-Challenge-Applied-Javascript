@@ -39,7 +39,7 @@ const newCard = data => {
   const card = document.createElement("div");
   const heads = document.createElement("div");
   const author = document.createElement("div");
-  const imgCont = document.createElement("img");
+  const imgCont = document.createElement("div");
   const image = document.createElement("img");
   const spanner = document.createElement("span");
 
