@@ -17,3 +17,68 @@
     <div class="right-button"> > </div>
   </div>
 */
+
+const NewCar = () => {
+  const cari = document.createElement("div");
+  const left = document.createElement("div");
+  const image1 = document.createElement("img");
+  const image2 = document.createElement("img");
+  const image3 = document.createElement("img");
+  const image4 = document.createElement("img");
+  const right = document.createElement("div");
+
+  cari.appendChild(left);
+  cari.appendChild(image1);
+  cari.appendChild(image2);
+  cari.appendChild(image3);
+  cari.appendChild(image4);
+  cari.appendChild(right);
+
+  cari.classList.add("carousel");
+  left.textContent = "<";
+  right.textContent = ">";
+  left.classList.add("left-button");
+  right.classList.add("right-button");
+  image1.src = "./assets/carousel/mountains.jpeg";
+  image2.src = "./assets/carousel/computer.jpeg";
+  image3.src = "./assets/carousel/trees.jpeg";
+  image4.src = "./assets/carousel/turntable.jpeg";
+  image1.classList.add("fade");
+  image2.classList.add("fade");
+  image3.classList.add("fade");
+  image4.classList.add("fade");
+  // functionality
+  let index = 1;
+  const images = [image1, image2, image3, image4];
+
+  const change = () => {
+    images[index].style.display = "block";
+    left.addEventListener("click", () => {
+      if (index > 0) {
+        newIndex = --index;
+        images[newIndex].style.display = "block";
+        images[newIndex + 1].style.display = "none";
+      } else {
+        // newIndex = 3;
+        images[0].style.display = "none";
+        images[newIndex].style.display = "block";
+      }
+    });
+    right.addEventListener("click", () => {
+      if (index < images.length - 1) {
+        newIndex = ++index;
+        images[newIndex].style.display = "block";
+        images[newIndex - 1].style.display = "none";
+      } else {
+        // newIndex = 0;
+        images[images.length - 1].style.display = "none";
+        images[newIndex].style.display = "block";
+      }
+    });
+  };
+  change();
+  return cari;
+};
+
+const target = document.querySelector(".carousel-container");
+target.appendChild(NewCar());
